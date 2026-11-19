@@ -7,9 +7,11 @@ import Animated, {
   useSharedValue,
   withSpring,
 } from 'react-native-reanimated';
+import HintCard from '../components/HintCard';
+import Stage from '../components/Stage';
 import { colors } from '../theme';
 
-const SIZE = 96;
+const SIZE = 100;
 const MAX_TILT = 35; // grados
 const TILT_DISTANCE = 140; // px de arrastre para llegar a la inclinación máxima
 
@@ -76,43 +78,39 @@ export default function DragDropScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.hint}>Arrastra la figura: a la izquierda gira a la izquierda, a la derecha gira a la derecha.</Text>
-      <View style={styles.area} onLayout={onLayout}>
+      <HintCard
+        color={colors.primary}
+        title="Arrastra la figura"
+        text="Si la mueves a la izquierda gira a la izquierda; a la derecha, gira a la derecha."
+      />
+      <Stage color={colors.primary} onLayout={onLayout}>
         <GestureDetector gesture={pan}>
           <Animated.View style={[styles.shape, shapeStyle]}>
-            <Text style={styles.arrows}>◀ ▶</Text>
+            <Text style={styles.arrows}>‹  ›</Text>
           </Animated.View>
         </GestureDetector>
-      </View>
+      </Stage>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: colors.bg, padding: 16, gap: 12 },
-  hint: { color: colors.muted, fontSize: 14, lineHeight: 20, textAlign: 'center' },
-  area: {
-    flex: 1,
-    backgroundColor: colors.surface,
-    borderColor: colors.border,
-    borderWidth: 1,
-    borderRadius: 20,
-    overflow: 'hidden',
-  },
+  container: { flex: 1, backgroundColor: colors.bg, padding: 16, gap: 14 },
   shape: {
     position: 'absolute',
     left: 0,
     top: 0,
     width: SIZE,
     height: SIZE,
-    borderRadius: 22,
+    borderRadius: 28,
     backgroundColor: colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
     shadowColor: colors.primary,
-    shadowOpacity: 0.6,
+    shadowOpacity: 0.45,
     shadowRadius: 16,
+    shadowOffset: { width: 0, height: 10 },
     elevation: 10,
   },
-  arrows: { color: colors.text, fontSize: 18, fontWeight: '700' },
+  arrows: { color: colors.white, fontSize: 32, fontWeight: '800' },
 });

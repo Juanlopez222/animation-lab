@@ -1,18 +1,23 @@
 # Animation Lab
 
-App móvil con **React Native Reanimated + Expo** que reúne 6 ejercicios de animaciones y gestos, accesibles desde un **Drawer Navigation**.
+App móvil hecha con **React Native**, **Expo** y **React Native Reanimated** que reúne 6 ejercicios de animaciones y gestos en una sola aplicación, accesibles desde un **Drawer Navigation** (menú lateral).
 
 ## Ejercicios
 
-| # | Ejercicio | Estado |
-|---|-----------|--------|
-| 1 | Drag & Drop con rotación | Módulo 2 ✅ |
-| 2 | Loading (spinner + barra de progreso) | Módulo 3 |
-| 3 | Gestos multitouch (zoom, mover, rotar) | Módulo 3 |
-| 4 | Bounce al presionar | Módulo 2 ✅ |
-| 5 | Carrusel animado | Módulo 3 |
-| 6 | Animación con acelerómetro (shake) | Módulo 4 |
-| 7 | Drawer Navigation | Módulo 1 ✅ |
+| # | Pantalla | Qué hace | Técnica |
+|---|----------|----------|---------|
+| 1 | Drag & Drop | Una figura se arrastra por la pantalla y rota hacia el lado al que se mueve | `usePanGesture`, `interpolate`, `withSpring` |
+| 2 | Loading | Al montar, un spinner gira sin parar junto a una barra de progreso animada | `withRepeat`, `withTiming`, `useAnimatedProps` |
+| 3 | Multitouch | Zoom, mover y rotar una imagen con varios dedos | `usePanGesture`, `usePinchGesture`, `useRotationGesture`, `useSimultaneousGestures` |
+| 4 | Bounce | La figura se encoge al presionar y vuelve a su tamaño con rebote al soltar | `withTiming`, `withSpring` |
+| 5 | Carrusel | Tarjetas horizontales con escala, rotación y opacidad según la posición | `Animated.FlatList`, `useAnimatedScrollHandler`, `interpolate` |
+| 6 | Shake | La figura se sacude cuando se agita el celular | `expo-sensors` (acelerómetro), `withSequence` |
+| 7 | Drawer | Menú lateral para entrar a cada ejercicio por separado | `@react-navigation/drawer` |
+
+## Requisitos
+
+- Node.js 22.13 o superior
+- La app **Expo Go** en el celular, o un emulador Android/iOS
 
 ## Cómo ejecutarlo
 
@@ -21,15 +26,29 @@ npm install
 npx expo start
 ```
 
-Escanea el QR con **Expo Go** en tu celular (el acelerómetro solo funciona en un dispositivo real).
+Escanea el código QR con Expo Go.
+
+Notas de prueba:
+- El ejercicio **Shake** necesita un celular real. En emulador, o si el dispositivo no tiene acelerómetro, usa el botón "Probar sin agitar".
+- Los gestos de dos dedos del ejercicio **Multitouch** se prueban mejor en un celular real.
 
 ## Estructura
 
 ```
-App.tsx                      # raíz: GestureHandlerRootView + Drawer
+App.tsx                      Raíz: GestureHandlerRootView + Drawer
+assets/gesture-image.png     Imagen del ejercicio Multitouch
 src/
-  navigation/                # Drawer y lista de ejercicios
-  screens/                   # una pantalla por ejercicio
-  components/                # componentes reutilizables
-  theme.ts                   # colores
+  navigation/                Drawer y lista de ejercicios
+  screens/                   Una pantalla por ejercicio
+  components/                Componentes reutilizables
+  theme.ts                   Paleta de colores
 ```
+
+## Tecnologías
+
+- Expo SDK 58 y React Native 0.88
+- react-native-reanimated 4 y react-native-worklets
+- react-native-gesture-handler 3
+- @react-navigation/native y @react-navigation/drawer
+- expo-sensors y expo-haptics
+- TypeScript

@@ -1,11 +1,18 @@
 export const colors = {
-  bg: '#0B0B14',
-  surface: '#15152A',
-  border: '#26264A',
-  text: '#F2F2FA',
-  muted: '#9A9AB8',
-  primary: '#7C5CFF',
-  accent: '#00E0B8',
-  pink: '#FF5CA8',
-  yellow: '#FFC93C',
+  // Base clara
+  bg: '#F5F3FF',
+  surface: '#FFFFFF',
+  border: '#E4DFF7',
+  text: '#1E1A3C',
+  muted: '#6E6A8F',
+  // Colores de acento (uno por ejercicio)
+  primary: '#6C4DFF',
+  accent: '#00BFA6',
+  pink: '#FF4F8B',
+  yellow: '#FFB020',
+  blue: '#2F7BFF',
+  orange: '#FF7A3D',
+  // Sombras con tinte violeta
+  shadow: '#3B2A8C',
+  white: '#FFFFFF',
 };
