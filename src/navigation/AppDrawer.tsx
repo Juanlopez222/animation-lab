@@ -36,7 +36,7 @@ export default function AppDrawer() {
         <Drawer.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Animation Lab', drawerLabel: '  Inicio' }}
+          options={{ title: 'Animation Lab', drawerLabel: '🏠  Inicio' }}
         />
         {exercises.map((e, i) => (
           <Drawer.Screen
